@@ -1,0 +1,52 @@
+[
+    {
+      "inveniraStdID": 1001,
+      "quantAnalytics": [
+        {
+          "name": "Acedeu à atividade",
+          "value": true
+        },
+        {
+          "name": "Download documento 1",
+          "value": true
+        },
+        {
+          "name": "Evolução pela atividade (%)",
+          "value": "33.3"
+        }
+      ],
+      "qualAnalytics": [
+        {
+          "Student activity profile": "https://ActivityProvider/?APAnID=11111111"
+        },
+        {
+          "Actitivy Heat Map": "https://ActivityProvider/?APAnID=21111111"
+        }
+      ]
+    },
+    {
+      "inveniraStdID": 1002,
+      "quantAnalytics": [
+        {
+          "name": "Acedeu à atividade",
+          "value": true
+        },
+        {
+          "name": "Download documento 1",
+          "value": false
+        },
+        {
+          "name": "Evolução pela atividade (%)",
+          "value": "10.0"
+        }
+      ],
+      "qualAnalytics": [
+        {
+          "Student activity profile": "https://ActivityProvider/?APAnID=11111112"
+        },
+        {
+          "Actitivy Heat Map": "https://ActivityProvider/?APAnID=21111112"
+        }
+      ]
+    }
+  ]
