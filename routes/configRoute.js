@@ -6,13 +6,13 @@ Author: Duarte Cota
 File: middleware route for getting configuration interface
 */
 
-const express = require('express');
+const express = require('express')
 const path = require('path')
-const configRoute = express.Router();
+const configRoute = express.Router()
 
 configRoute.get('/', async (req,res) => {
     const obj = { response : 'URL to configuration interface'}
     res.sendFile(path.join(__dirname,'../public/config.html'))
-});
+})
 
-module.exports = configRoute;
+module.exports = configRoute

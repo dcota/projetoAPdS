@@ -6,18 +6,14 @@ Author: Duarte Cota
 File: middleware route for getting activity analytics
 */
 
-const express = require('express');
-const path = require('path')
-const analyticsRoute = express.Router();
+const express = require('express')
+const analyticsRoute = express.Router()
 
-analyticsRoute.get('/', async (req,res) => {
-    if(!req.body){
-        const obj = { response : 'some analytics...'}
-        res.json(obj)
+analyticsRoute.post('/', (req,res) => {
+    let obj = {
+        response: 'Analytics for activity with ID = ' + req.body.activityID
     }
-    else {
-        res.sendFile(path.join(__dirname, '../public/dummy.json'));
-    }
-});
+    res.json(obj)
+})
 
-module.exports = analyticsRoute;
+module.exports = analyticsRoute             

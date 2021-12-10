@@ -6,8 +6,8 @@ Author: Duarte Cota
 File: middleware route for getting training databases
 */
 
-const express = require('express');
-const initconfig = express.Router();
+const express = require('express')
+const initconfig = express.Router()
 const instance = require('../DBconnection')
 const conn =  instance.getconn() 
 

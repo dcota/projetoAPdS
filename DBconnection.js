@@ -22,7 +22,7 @@ class DBConnection {
         })
         connection.connect((err)=>{
             if(err){
-                throw err;
+                throw err
             }
             else {
                 console.log('Connected to database ' + process.env._DATABASE)
@@ -38,6 +38,6 @@ class DBConnection {
     } 
 }
 
-const instance = new DBConnection();
+const instance = new DBConnection()
 Object.freeze(instance)
 module.exports = instance

@@ -6,9 +6,8 @@ Author: Duarte Cota
 File: middleware route for getting queries from database
 */
 
-const express = require('express');
-const getqueries = express.Router();
-//const connection = require('../dbconnection');
+const express = require('express')
+const getqueries = express.Router()
 const instance = require('../DBconnection')
 const conn =  instance.getconn() 
 
@@ -25,4 +24,5 @@ getqueries.post('/', (req,res) => {
     })
 
 })
+
 module.exports = getqueries

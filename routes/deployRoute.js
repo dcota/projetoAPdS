@@ -6,19 +6,14 @@ Author: Duarte Cota
 File: middleware route for activity deploy
 */
 
-const express = require('express');
-const path = require('path')
-const deployRoute = express.Router();
+const express = require('express')
+const deployRoute = express.Router()
 
-deployRoute.get('/', async (req,res) => {
-    if(!req.body){
-        const obj = { response : 'URL to deploy interface'}
-        res.json(obj)
+deployRoute.post('/', (req,res) => {
+    const obj = {
+        deployURL:'URL with activityID and inveniraStdID'
     }
-    else {
-        const obj = req.body
-        res.json(obj)
-    }
-});
+    res.json(obj)
+})
 
-module.exports = deployRoute;
+module.exports = deployRoute
