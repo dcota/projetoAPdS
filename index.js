@@ -30,8 +30,6 @@ const facade = new Facade()
 
 //calls facade method that deals with the requests
 app.use('/', (req, res) => {
-    //let method = req.method
-    //let path = req.path
     facade.processRequest(req,res)
 })
 
