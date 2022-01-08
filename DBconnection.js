@@ -3,12 +3,11 @@ Mestrado em Engenharia Informática e Tecnologia Web
 Arquitetura e Padrões de Software
 Tópico 4 - semana 2/3 (padrões de criação)
 Author: Duarte Cota
-File: database connection using Singleton pattern
+Description: MySQL connection using Singleton pattern
 */
 
 const mysql = require('mysql2')
 require('dotenv').config({ path: './private/.env' })
-
 
 class DBConnection {
     constructor(){
@@ -22,7 +21,7 @@ class DBConnection {
         })
         connection.connect((err)=>{
             if(err){
-                throw err
+                throw err;
             }
             else {
                 console.log('Connected to database ' + process.env._DATABASE)
@@ -38,6 +37,6 @@ class DBConnection {
     } 
 }
 
-const instance = new DBConnection()
+const instance = new DBConnection();
 Object.freeze(instance)
 module.exports = instance

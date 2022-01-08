@@ -1,0 +1,56 @@
+<!--
+Mestrado em Engenharia Informática e Tecnologia Web
+Arquitetura e Padrões de Software
+Tópico 4 - semana 2/3 (padrões de criação)
+Author: Duarte Cota
+Description: HTML structure for deploy interface
+-->
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Acesso à da atividade</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="/scriptDeploy.js"></script>
+    </head>
+    <body onload="start();">
+        <div class="container mt-5">
+            <h1>Atividade: Prática de SQL</h1>
+            <h6 class="mt-4 " style="text-align: justify;">Esta atividade destina-se à prática de consultas em bases de dados relacionais recorrendo à linguagem SQL. Para a realização deverá fazer o download e intalação de uma aplicação no seu PC. Para efetuar o download selecione o seu sistema operativo e proceda à instalação.</h6>
+            <div class="mt-4" style="border-color: brown; border-width: 3px; border-style: solid;padding:10px">
+                <h3>IMPORTANTE:</h3>
+                <p style="text-align: justify;">Anote o código abaixo. Para aceder à atividade deverá introduzir este código na aplicação para ter acesso às tarefas e para que o seu professor possa acompanhar o seu progresso.</p>
+                <div class="mt-4" id="code"></div>
+                <div class="mt-4" id="_copy"></div>
+            </div>
+        </div>
+        <div class="container mt-4 mb-4 text-center">
+            <div class="text-center mt-4" id="sp1">
+                <div class="spinner-border text-info"  role="status">
+                </div>
+                <p class="text-info">Aguarde por favor...</p>
+            </div>
+            <h5>Download da aplicação para realizar a atividade:</h5>
+        </div>
+        <div class="container mt-4 text-center">
+            
+            <div class="row">
+                <div class="col-sm-4">
+                    <button onclick="downloadApp()" type="button" class="btn btn-primary btn-lg mb-3" style="width:200px;">Download</br>Windows</button>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-lg mb-3" style="width:200px;">Download</br>OSX</button>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-lg mb-3" style="width:200px;">Download</br>Ubuntu/Debian</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

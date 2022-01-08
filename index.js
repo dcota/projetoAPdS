@@ -1,25 +1,44 @@
 /*
 Mestrado em Engenharia Informática e Tecnologia Web
 Arquitetura e Padrões de Software
-Tópico 4 - semana 2/3 (padrões de criação)
 Author: Duarte Cota
-File: main webserver file
+Description: main file, implements Facade pattern
 */
 
-const express = require('express')
+//imports core modules
+const express = require('express');
 const app = express()
 
+//defines public static folder
 app.use(express.static('./public'))
 
+//using json
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json({ extended: false }))
 
-//define routes middleware
-app.use('/config', require('./routes/configRoute'))
-app.use('/deploy',require('./routes/deployRoute'))
-app.use('/analytics',require('./routes/analyticsRoute'))
-app.use('/initconfig',require('./routes/initconfigRoute'))
-app.use('/getqueries',require('./routes/getqueriesRoute'))
-app.use('/getmodel',require('./routes/getmodelRoute'))
- 
-app.listen()
+/*all methods from all modules available here if needed*/
+const {getdbs, getqueries} = require ('./mysqlqueries')
+const {getdeployurl, getdeploydata, getstdcode} = require ('./deploy');
+const {sendmodel, sendapp, configinterface, deployinterface} = require ('./files')
+const {firstAccess, updateanalytics} = require ('./analytics');
+
+//*************** implements facade pattern ************************* */
+
+//instanciate facade object
+const {Facade} = require ('./facade')
+const facade = new Facade()
+
+//calls facade method that deals with the requests
+app.use('/', (req, res) => {
+    //let method = req.method
+    //let path = req.path
+    facade.processRequest(req,res)
+})
+
+//*************** end of facade pattern implementation ******************* */
+
+ //defines local port and starts the server
+const port = 3000
+app.listen(process.env.PORT || port, () => {
+    console.log(`Listenning on port ${port}`)
+})

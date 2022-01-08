@@ -1,21 +1,59 @@
 {
+  
   "name": "projeto_aps",
+  
   "version": "1.0.0",
+  
   "description": "Projeto do semestre de APS",
+  
   "main": "index.js",
+  
   "scripts": {
-    "start": "node index.js"
+  
+    
+  "start": "nodemon esm index.js"
+  
   },
+  
   "author": "Duarte Cota",
+  
   "license": "ISC",
+  
   "dependencies": {
-    "dotenv": "^10.0.0",
-    "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "mysql2": "^2.3.3",
-    "path": "^0.12.7"
+  
+    
+  "adm-zip": "^0.5.9",
+  
+    
+  "bcryptjs": "^2.4.3",
+  
+    
+  "dotenv": "^10.0.0",
+  
+    
+  "esm": "^3.2.25",
+  
+    
+  "express": "^4.17.1",
+  
+    
+  "mongoose": "^6.1.2",
+  
+    
+  "mysql2": "^2.3.3",
+  
+    
+  "path": "^0.12.7",
+  
+    
+  "sha1": "^1.1.1"
+  
   },
+  
   "devDependencies": {
-    "nodemon": "^2.0.15"
+  
+    
+  "nodemon": "^2.0.15"
+  
   }
 }
