@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
 const analyticsSchema = mongoose.Schema({
-    //'activityID': {'type': 'Number'},
-    //'inveniraStdID': {'type': 'Number'},
+    'activityID': {'type': 'Number'},
+    'inveniraStdID': {'type': 'Number'},
     'access': {'type': Boolean},
     'downloadApp': {'type': Boolean},
     'viewModel': {'type': Boolean},
+    'numQueries': {'type': Number},
     'studentData': {'type': ['Mixed']},
     "hash": {'type': 'String'},
     date: {type: Date, default: Date.now}

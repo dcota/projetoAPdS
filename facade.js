@@ -9,7 +9,7 @@ Description: implementation of class Facade
 const {getdbs, getqueries} = require ('./mysqlqueries')
 const {getdeployurl, getdeploydata, getstdcode} = require ('./deploy');
 const {sendmodel, sendapp, configinterface, deployinterface} = require ('./files')
-const {firstAccess, updateanalytics} = require ('./analytics');
+const {firstAccess, updateanalytics, returnanalytics} = require ('./analytics');
 
 //declaring class Facade
 class Facade {
@@ -75,6 +75,11 @@ class Facade {
                 res.json(msg)
             })
         }    
+        else if(method == 'POST' && path == '/analytics'){
+            returnanalytics(req.body, (analytics) => {
+                res.json(analytics)
+            })
+        }
     }
 }
 

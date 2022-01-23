@@ -6,6 +6,7 @@ Description: scripts for deploy interface
 */
 
 let _hash=''
+let numQueries=0
 
 function start(){
     const queryString = window.location.search;
@@ -36,29 +37,32 @@ function getData(inveniraStdID,activityID) {
         code.innerHTML += 
         `
         <h5>C<span>&oacute</span>digo:</h5>
-        <input type="text" class="form-control mt-2" id="codetocopy" value="${data}">
+        <input type="text" class="form-control mt-2" id="codetocopy" value="${data._hash}">
         <button onclick="copyCode()" type="button" class="btn btn-primary btn-sm mt-2">Copiar</button>
         `
-        sethash(data)
+        sethash(data._hash, data.numQueries)
         })
     .catch(function (error) {
         alert('Request failed', error)
     });
 }
 
-function sethash(data){
-    _hash = data
-    createAnalytics(_hash)
+function sethash(hash, numQueries){
+    _hash = hash
+    numQueries = numQueries
+    console.log('hash' + _hash)
+    createAnalytics(_hash,numQueries)
 }
 
-function createAnalytics(_hash){
+function createAnalytics(_hash, numQueries){
     var obj = new Object();
-	//obj.activityID = activityID;
-	//obj.inveniraStdID = inveniraStdID;
+	obj.activityID = activityID;
+	obj.inveniraStdID = inveniraStdID;
     obj._hash = _hash
 	obj.access = true
 	obj.downloadApp = false
 	obj.viewModel = false
+    obj.numQueries = numQueries
 	obj.studentData = []
     myJSON = JSON.stringify(obj)
     console.log(myJSON)
@@ -124,6 +128,7 @@ function downloadApp(){
 }
 
 function updateAnalytics(interaction){
+    console.log('h: ' + _hash)
     var obj = new Object()
     obj._hash = _hash
     obj.interaction = interaction

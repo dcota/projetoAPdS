@@ -5,7 +5,7 @@ Author: Duarte Cota
 File: deploy module - declares methods to handle deploy requests
 */
 
-const mongoInstance = require('./mongoconnection')
+const mongoInstance = require('./dbconnections/mongoconnection')
 const {getqueriesdescription} = require ('./mysqlqueries')
 const mongoConn =  mongoInstance.getconn()
 const sha1 = require('sha1')
@@ -86,7 +86,12 @@ function getstdcode(body,callback){
     .then ((data) => {
         console.log("From database",data);
         if(data!=0) {
-            callback(data.hash);
+            const ob = {
+                _hash: data.hash,
+                numQueries: data.json_params.selectedQueries.length
+            }
+            console.log(data.json_params.selectedQueries.length)
+            callback(ob);
         }
         else{
            callback(null)

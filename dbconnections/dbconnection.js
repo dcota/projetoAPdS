@@ -9,14 +9,14 @@ Description: MySQL connection using Singleton pattern
 const mysql = require('mysql2')
 require('dotenv').config({ path: './private/.env' })
 
-class DBConnection {
+class DBConnection1 {
     constructor(){
-     if(! DBConnection.instance){
+     if(! DBConnection1.instance){
         const connection = mysql.createConnection({
             host: process.env._HOST,
             user: process.env._USER,
             password: process.env._PASSWORD,
-            database: process.env._DATABASE,
+            database: process.env._DATABASE1,
             port: process.env._PORT   
         })
         connection.connect((err)=>{
@@ -24,12 +24,12 @@ class DBConnection {
                 throw err;
             }
             else {
-                console.log('Connected to database ' + process.env._DATABASE)
+                console.log('Connected to database ' + process.env._DATABASE1)
             }
         })
        this.conn=connection
      }
-     return DBConnection.instance
+     return DBConnection1.instance
     } 
 
     getconn(){
@@ -37,6 +37,8 @@ class DBConnection {
     } 
 }
 
-const instance = new DBConnection();
-Object.freeze(instance)
-module.exports = instance
+const instance1 = new DBConnection1();
+
+Object.freeze(instance1)
+
+module.exports = instance1
