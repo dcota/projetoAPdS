@@ -36,7 +36,4 @@ app.use('/', (req, res) => {
 //*************** end of facade pattern implementation ******************* */
 
  //defines local port and starts the server
-const port = 3000
-app.listen(process.env.PORT || port, () => {
-    console.log(`Listenning on port ${port}`)
-})
+app.listen(3000)

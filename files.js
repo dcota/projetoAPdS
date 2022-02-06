@@ -7,6 +7,14 @@ Description: files module - declares methods to return files from the system
 
 const path = require('path')
 
+function sendFile(filePath, callback){
+    const file = path.join(__dirname,filePath)
+    callback(file)
+}
+
+module.exports = {sendFile}
+
+/*
 //method to send ER model image
 function sendmodel(model,callback){
     const modelimage = path.join(__dirname,'./public/img/'+ model + '.png')
@@ -31,4 +39,5 @@ function deployinterface(callback){
     callback(deployurl)
 }
 
-module.exports = {sendmodel, sendapp, configinterface, deployinterface}
+//module.exports = {sendmodel, sendapp, configinterface, deployinterface}
+*/

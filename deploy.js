@@ -28,7 +28,7 @@ function getdeployurl(body,callback) {
             deployRequestObject.save()
             .then ( result => {
                 console.log(result)
-                var obj = {"deployURL":"http://localhost:3000/deploy/?inveniraStdID=" + body.inveniraStdID + "&activityID=" + body.activityID }
+                var obj = {"deployURL":"https://apds.duartecota.com/deploy/?inveniraStdID=" + body.inveniraStdID + "&activityID=" + body.activityID }
                 callback(obj);
                 console.log('Activity created');
             })
@@ -38,7 +38,7 @@ function getdeployurl(body,callback) {
             });
         }
         else {
-                var obj = {"deployURL":"http://localhost:3000/deploy/?inveniraStdID=" + body.inveniraStdID + "&activityID=" + body.activityID }
+                var obj = {"deployURL":"https://apds.duartecota.com/deploy/?inveniraStdID=" + body.inveniraStdID + "&activityID=" + body.activityID }
                 callback(obj);
                 console.log('Existing activity');       
         }

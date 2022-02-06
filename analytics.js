@@ -16,7 +16,19 @@ const {getdbname, checkquery, getqueries, gettruequery} = require ('./mysqlqueri
 const {Iterator} = require('./iterator')
 const { sendFile } = require('express/lib/response')
 
-
+//method to return detailed analytics for student
+function detailedAnalytics(body,callback){
+    analyticsRequest.find({'activityID': {$eq: body.activityID}, 'inveniraStdID': {$eq: body.inveniraStdID}})
+    .exec()
+    .then((data)=>{
+        console.log(data)
+        callback(data)
+    })
+    .catch((error)=>{
+        console.log(error)
+        callback(error)
+    })
+}
 //method to create document for analytics
 function firstAccess(body,callback){
     analyticsRequest.find({'hash': {$eq: body._hash}})
@@ -130,7 +142,6 @@ function updateanalytics(body,callback){
     }
 }
 
-//method to return analytics for activity
 function returnanalytics(body,callback){
     analyticsRequest.find({'activityID': {$eq: body.activityID}})
     .exec()
@@ -168,7 +179,7 @@ function returnanalytics(body,callback){
             obj = {
                 'inveniraStdID': item.inveniraStdID, 
                 'quantAnalytics': quanAnalytics,
-                'qualAnalyticsURL': 'https://apds.duartecota.com/qualanalytics/?stdcode='+ item.hash
+                'qualAnalyticsURL': 'http://localhost:3000/qualanalytics/?inveniraStdID='+ item.inveniraStdID + "&activityID=" + body.activityID
             }
             analytics.push(obj)
         })
@@ -179,7 +190,6 @@ function returnanalytics(body,callback){
     })
 }
 
-//method to return how many correct answers
 function getTrue(item){
     let conta=0
     let result=[]
@@ -198,4 +208,4 @@ function getTrue(item){
     return conta
 }
 
-module.exports = {firstAccess, updateanalytics, returnanalytics}
+module.exports = {firstAccess, updateanalytics, returnanalytics, detailedAnalytics}

@@ -1,8 +1,9 @@
 /*
 Mestrado em Engenharia Informática e Tecnologia Web
 Arquitetura e Padrões de Software
+Tópico 4 - semana 2/3 (padrões de criação)
 Author: Duarte Cota
-Description: scripts for activity configuration interface
+File: scripts for activity configuration interface
 */
 
 // variables for Inven!RA harvest
@@ -89,7 +90,7 @@ function showQueries(data){
     selectedQueries=[]
     queries = data
     const warning = document.getElementById('warning')
-    warning.innerHTML = ''
+    warning.innerHTML=''
     if(selectedQueries.length==0){
         warning.innerHTML +=
         `<div class="alert alert-danger" role="alert">
@@ -97,7 +98,7 @@ function showQueries(data){
         </div>`
     }
     const tbl = document.getElementById('tblqueries')
-    tbl.innerHTML = ''
+    tbl.innerHTML=''
     const tblhead = 
         `<thead>
             <tr>
@@ -110,7 +111,7 @@ function showQueries(data){
         </tbody>`
     tbl.innerHTML += tblhead
     const tbl_body = document.getElementById('tbl_body')
-    tbl_body.innerHTML = ''
+    tbl_body.innerHTML=''
     for(obj in data){
         let tbl_line = 
         `<tr> 
@@ -199,10 +200,11 @@ function showModel(id){
         mode:'cors',
         body: ob
     }
-    fetch('http://localhost:3000/getmodel',options)
+    fetch('http://localhost:3000/getmodel', options)
     .then(res=>res.blob())
     .then(image => {
         const imageObjectURL = URL.createObjectURL(image);
+        console.log(imageObjectURL)
         var modelWrap=null
         if(modelWrap!==null){
              modelWrap.remove()

@@ -5,10 +5,11 @@ Author: Duarte Cota
 Description: scripts for deploy interface
 */
 
-let _hash=''
+let stdcode=''
 let numQueries=0
 
 function start(){
+    showsp()
     const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	inveniraStdID = urlParams.get('inveniraStdID');
@@ -17,10 +18,13 @@ function start(){
 }
 
 function getData(inveniraStdID,activityID) {
+    console.log(inveniraStdID)
+    console.log(activityID)
     var obj = new Object()
     obj.inveniraStdID = inveniraStdID
     obj.activityID = activityID
     ob = JSON.stringify(obj)
+    console.log(ob)
     const options = {
 		method: 'POST',
 		headers: {
@@ -28,19 +32,53 @@ function getData(inveniraStdID,activityID) {
 		},
 		body: ob
 	};
-    fetch('http://localhost:3000/deployCode', options)
+    fetch('http://localhost:3000/detailedanalytics', options)
     .then(res => res.json())
     .then(data => {
         hidesp()
-        const code = document.getElementById('code')
-        code.innerHTML += 
-        `
-        <h5>C<span>&oacute</span>digo:</h5>
-        <input type="text" class="form-control mt-2" id="codetocopy" value="${data._hash}">
-        <button onclick="copyCode()" type="button" class="btn btn-primary btn-sm mt-2">Copiar</button>
-        `
-        sethash(data._hash, data.numQueries)
-        })
+        let actstd = document.getElementById('actstd')
+        actstd.innerHTML += `ID da atividade: ${data[0].activityID}` + '<br><br>'
+        actstd.innerHTML += `ID do estudante: ${data[0].inveniraStdID} `
+        const tbl = document.getElementById('tblqueries')
+        const warning = document.getElementById('warning')
+        warning.innerHTML=''
+        if(data[0].studentData.length==0){
+            warning.innerHTML +=
+            `<div class="alert alert-danger" role="alert">
+            Não há consultas submetidas!
+            </div>`
+        }
+        const tblhead = 
+        `<thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Consulta</th>
+            <th scope="col">Resultado</th>
+            </tr>
+        </thead>
+        <tbody id="tbl_body">
+        </tbody>`
+        tbl.innerHTML+=tblhead
+        for(let i=0; i<data[0].studentData.length; i++) {
+            console.log(data[0])
+            let res=''
+            let cons=''
+            let color=''
+            if(data[0].studentData[i].result==false) res='Incorreto'
+                else res='Correto'
+            if(data[0].studentData[i].query=='') cons='Tentativa submetida sem consulta'
+                else cons=data[0].studentData[i].query
+            if(res=='Correto') color='color: green;'
+                else color='color: red;'
+            let tbl_line = 
+            `<tr> 
+                <th scope="row">${data[0].studentData[i].idQuery}</th>
+                <td>${cons}</td>
+                <td style="${color}">${res}</td>
+                </tr>` 
+            tbl_body.innerHTML += tbl_line
+        }
+    })
     .catch(function (error) {
         alert('Request failed', error)
     });
