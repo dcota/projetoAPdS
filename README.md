@@ -13,7 +13,7 @@ Implementação do padrão de estrutura Facade.
 
 Implementação do serviço de deploy da atividade, da app para o aluno realizar a atividade e preparação das analíticas.
 
-Pasta node_modules, private contendo as credenciais de acesso às bases de dados e dist com o ficheiro de instalação da app ignoradas no commit.
+Pasta node_modules e private contendo as credenciais de acesso às bases de dados e dist com o ficheiro de instalação da app ignoradas no commit.
 
 # Update3: 23/01/2022
 
@@ -21,7 +21,7 @@ Implementação do padrão de comportamento Iterator.
 
 Implementação do serviço de analíticas (quantitativas).
 
-Pasta node_modules, private contendo as credenciais de acesso às bases de dados e dist com o ficheiro de instalação da app ignoradas no commit.
+Pasta node_modules e private contendo as credenciais de acesso às bases de dados e dist com o ficheiro de instalação da app ignoradas no commit.
 
 # Update4: 06/02/2022
 
@@ -31,6 +31,6 @@ Refatorização do projeto conforme os antipadrões indentificados
 
 Conclusão da implementação do projeto do semestre
 
-Pasta node_modules, private contendo as credenciais de acesso às bases de dados e dist com o ficheiro de instalação da app ignoradas no commit.
+Pasta node_modules e private contendo as credenciais de acesso às bases de dados e dist com o ficheiro de instalação da app ignoradas no commit.
 
 
